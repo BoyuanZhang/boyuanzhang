@@ -1,0 +1,10 @@
+{
+    "name": "boyuanzhang",
+    "description": "Personal website",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "^4.13.4",
+        "body-parser": "^1.15.0",
+        "nodemailer": "^2.3.x"
+    }
+}
