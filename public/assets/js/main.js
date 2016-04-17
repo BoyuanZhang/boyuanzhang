@@ -71,8 +71,11 @@
                     contentType: 'application/json',
                     url: formParams.attr('action'),
                     data: JSON.stringify(jsonData),
-                    success: function(){
-                        self.sendSuccessCB();
+                    success: function(data, textStatus, xhr) {
+                        let code = xhr.status;
+
+                        if(code && code === 200 ) { self.sendSuccessCB(); }
+                        else { self.sendErrorCB(); }
                     },
                     error: function(){
                         self.sendErrorCB();
@@ -81,10 +84,13 @@
             },
 
             sendSuccessCB: function() {
+                $.flash('Email successfully sent!');
             },
 
             sendErrorCB: function() {
-
+                $.flash('Error sending email, please try again later...');
+                $('#email-button').prop("disabled", false);
+                $('#email-button').fadeIn(500);
             }
         }
 
@@ -122,6 +128,8 @@
 
                 $('#email-button').on('click', function() {
                     if( $('#contact-form').valid() ) {
+                        $('#email-button').prop("disabled", true);
+                        $('#email-button').fadeOut(500);
                         page.sendEmail();
                     }
                 });
