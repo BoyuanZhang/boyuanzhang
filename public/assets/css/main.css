@@ -2126,6 +2126,15 @@
 	color: #444;
 }
 
+#resume p.list-style {
+	display: list-item;
+	margin-bottom: 10px;
+}
+
+#resume p.technologies {
+	color: orange;
+}
+
 #resume h3 {
 	text-align: left;
 }
